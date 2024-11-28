@@ -1,0 +1,2 @@
+# KAmodESP32-ETH-POE
+ESP32 with Ethernet PHY LAN8742 and PoE with MP8007
