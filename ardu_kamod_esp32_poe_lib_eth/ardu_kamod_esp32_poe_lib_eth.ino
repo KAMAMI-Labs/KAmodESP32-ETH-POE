@@ -1,3 +1,4 @@
+//Ino Board: esp32 -> ESP32-WROOM_DA-Module
 #include <ETH.h>
 #include <WiFi.h>
 /* 
@@ -20,10 +21,14 @@
 #define ETH_MDC_PIN     23
 // Pin# of the I²C IO signal for the Ethernet PHY
 #define ETH_MDIO_PIN    18
+// Mode select PINs
+#define ETH_RXD0_MODE0   25
+#define ETH_RXD1_MODE1   26
+#define ETH_CRS_MODE2    27
 
-#define ETH_RESET     16
+#define ETH_RESET       16
 
-#define LED_PIN       2
+#define LED_PIN         2
 
 static bool eth_connected = false;
 
@@ -80,6 +85,10 @@ void setup() {
   //ETH Reset assert
   pinMode(ETH_RESET, OUTPUT);
   digitalWrite(ETH_RESET, LOW);
+
+  pinMode(ETH_RXD0_MODE0, INPUT_PULLUP);
+  pinMode(ETH_RXD1_MODE1, INPUT_PULLUP);
+  pinMode(ETH_CRS_MODE2, INPUT_PULLUP);
 
   pinMode(LED_PIN, OUTPUT);
   for(int i=0; i<5; i++){
